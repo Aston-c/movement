@@ -1,0 +1,43 @@
+<!doctype html>
+<body>
+    <canvas id="gameCanvas" width="800" height="800"></canvas>
+    <script>
+        var canvas, canvasContext;
+
+        window.onload = function() {
+            canvas = document.getElementById('gameCanvas');
+            canvasContext = canvas.getContext('2d');
+
+            setInterval(mainloop, 1000 / 50);
+        }
+        
+        var xPos = 0;
+        var yPos = 0;
+        const SIZE = 20;
+        var xSpeed = 5;
+        var ySpeed = 5;
+        
+        
+        function mainloop() {
+            colorRect(0,0,canvas.width,canvas.height,'black');
+            colorRect(xPos,yPos,SIZE,SIZE,'red');
+            
+            ballmove();
+        }
+        
+        function ballMove(){
+            xPos += xSpeed;
+            
+            if(xPos > canvas.width - SIZE){
+                xSpeed *= -1;
+            }
+            if(xPos < 0){
+                xSpeed *= -1;
+            }
+        }
+        
+         function colorRect(x,y,w,h,c){
+            canvasContext.fillStyle = c;
+            canvasContext.fillRect(x,y,w,h);
+        }
+    
