@@ -19,9 +19,13 @@
         
         function mainloop() {
             colorRect(0,0,canvas.width,canvas.height,'black'); 
+            colorRect(playerXpos,playerYpos, PLAYER_SIZE,PLAYER_SIZE,'red');
             
-            colorRect(0,0,20,20,'red')
-  
+  playerMove();
+        }
+        
+        function playerMove(){
+            playerXpos += playerXspeed;
         }
         
          function colorRect(x,y,w,h,c){
